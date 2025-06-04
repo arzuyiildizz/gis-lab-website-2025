@@ -1,0 +1,786 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Workflow - Air Pollution Monitoring in Austria</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+			
+
+		<style>
+    .flex-block-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2em;
+      margin-bottom: 2em;
+    }
+
+    .flex-block-container > div {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .flex-block-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    .flex-block-container img {
+      max-height: 300px;
+      object-fit: contain;
+    }
+  </style>
+
+
+	</head>
+	<body class="is-preload">
+		<div id="custom-lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999;">
+  <button id="lightbox-close" style="position:fixed; top:60px; right:20px; background:transparent; border: 2px solid rgb(219, 202, 202); border-radius: 4px; color:rgb(214, 196, 196); font-size:20px; cursor:pointer; z-index:10000;">&times;</button>
+  <div class="lightbox-content" style="position:relative;">
+    <img id="custom-lightbox-img" src="" style="max-width:90vw; max-height:90vh; cursor: zoom-in; user-select:none;">
+  </div>
+</div>
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="home.html">Air Pollution Monitoring in Austria</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="home.html">Home</a></li>
+											<li><a href="workflow.html">Workflow</a></li>
+											<li><a href="results.html">Results</a></li>
+											<li><a href="WEBGIS.html">WebGIS</a></li>
+											
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2>Air Pollution Monitoring in Austria</h2>
+							<p></p>
+						</header>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<h3><u><span style="font-size: 1.5em; text-transform: uppercase;">WORKFLOW</span></u></h3>
+								<h5><span style="font-size: 1.5em; text-transform: uppercase;">Study Area:</span></h5>
+								<a href="images/studyarea.png" class="image featured">
+  <img src="images/studyarea.png" alt="Austria AOI Map" style="max-width: 100%; height: auto;" />
+</a>
+
+								<p class="justify" style="color:#333;">How were the maps and charts on air pollution and population exposure created? Here, you’ll find the process step by step, beginning with data downloads, followed by analysis in QGIS, and ending with a fully interactive WebGIS platform.
+								</p>
+								<hr />
+  <!-- Data Sources -->
+<header>
+  <h4 style="color:black;">Data Sources</h4>     
+  <p class="justify" style="color:#333; font-size: 1em;">
+    The analysis relies on open-source geospatial datasets obtained from internationally recognized platforms.
+    All data were downloaded, pre-processed, and harmonized in QGIS to support spatial analysis and mapping.
+  </p>
+</header>
+
+
+<!-- Data Cards Grid -->
+<div style="display: flex; flex-wrap: wrap; gap: 2em; margin-top: 2em;">
+
+	<!-- Card 1: Air Quality Data -->
+	<div style="flex: 1; min-width: 300px; background-color: #f7f7f7; padding: 1.5em; border-radius: 8px;">
+	  <h5 style="margin-top: 0;">Air Quality Data NO₂, PM₂.₅, and PM₁₀:</h5>
+	  <ul style="margin-left: 1.2em;">
+		<li>Source: Copernicus Atmosphere Monitoring Service</li>
+	  </ul>
+	  <h6 style="margin-top: 0;">(CAMS):</h6>
+	  <ul style="margin-left: 1.2em;">
+		<li>Years: 2013–2022</li>
+		<li>Format: GeoTIFF (.tif)</li>
+		<li>Note: Monthly, annual average, and anomaly (AAD) layers were used for each pollutant.</li>
+	  </ul>
+	</div>
+
+
+
+	<!-- Card 2: Land Cover Data -->
+	<div style="flex: 1; min-width: 300px; background-color: #f7f7f7; padding: 1.5em; border-radius: 8px;">
+		<h5 style="margin-top: 0;">Land Cover Data:</h5>
+		<ul style="margin-left: 1.2em;">
+		  <li>Source: ESA Climate Change Initiative (CCI) Land Cover Dataset</li>
+	      <li>Year: 2022</li>
+		  <li>Format: NetCDF (.nc), converted to GeoTIFF (.tif)</li>
+		  <li>Note: The data was reclassified to identify agriculture, forest, grassland, wetland, settlement and other relevant land cover types.</li>
+		</ul>
+    </div>
+
+	<!-- Card 3: Population Data -->
+	<div style="flex: 1; min-width: 300px; background-color: #f7f7f7; padding: 1.5em; border-radius: 8px;">
+		<h5 style="margin-top: 0;">Population Data:</h5>
+		<ul style="margin-left: 1.2em;">
+		  <li>Source: WorldPop Project</li>
+	      <li>Year: 2020</li>
+		  <li>Format: GeoTIFF (.tif)</li>
+		  <li>Note: The raster layer represents estimated population counts at 100-meter resolution.</li>
+		</ul>
+    </div>
+
+	<!-- Card 4: Population Data -->
+	<div style="flex: 1; min-width: 300px; background-color: #f7f7f7; padding: 1.5em; border-radius: 8px;">
+		<h5 style="margin-top: 0;">Administrative Boundaries:</h5>
+		<ul style="margin-left: 1.2em;">
+		   <li>Source: Global Administrative Unit Layers (GAUL) Dataset</li>
+	 	   <li>Country: Austria</li>
+	  	   <li>Levels Used</li>
+	  	   <li>Level 0 – National Boundary (for masking and display purposes)</li>
+		   <li>Level 2 – District Boundaries (used for zonal statistics and exposure aggregation)</li>
+		   <li>Format: Shapefile (.shp)</li>
+		</ul>
+	</div>
+
+	<!-- Card 5: Additional Information -->
+	<div style="flex: 1; min-width: 300px; background-color: #f7f7f7; padding: 1.5em; border-radius: 8px;">
+		<h5 style="margin-top: 0;">Additional Information:</h5>
+		<ul style="margin-left: 1.2em;">
+		   <li>Coordinate Reference System (CRS): EPSG:4326 – WGS 84</li>
+	 	   <li>Country: Austria</li>
+	  	   <li>Units: degrees</li>
+	  	   <li>Method: Geographic Coordinate System</li>
+		   <li>Celestial Body: Earth</li>
+		   <li>Accuracy: Based on World Geodetic System 1984 (EPSG:4326), suitable for global-scale spatial analysis with standard positional accuracy.</li>
+		</ul>
+	</div>
+
+	
+ <!-- Step 1 – Title -->
+<hr />
+<header>
+  <h4 style="color: black; ">Step 1 – Monthly Aggregated Pollutant Maps (December 2022)</h4>
+  <ul class="justify">
+    <li>This first step involves the creation of monthly average pollutant concentration maps for NO₂, PM₂.₅, and PM₁₀ for December 2022. These datasets were obtained from the Copernicus Atmosphere Monitoring Service (CAMS) as NetCDF files and processed in QGIS.</li>
+    <li>To produce the final raster maps, first, the CAMS NetCDF datasets were imported into QGIS as mesh layers. Using the Mesh Calculator, we computed the monthly average for December 2022. The resulting mesh was rasterized to GeoTIFF format and clipped to the boundaries of Austria using the GAUL Level 0 shapefile. Final outputs were styled using a sequential color gradient to indicate variation in concentration levels across regions.</li>
+    <li>Below are the final outputs for each pollutant:</li>
+  </ul>
+</header>
+
+<!-- NO2 Blok -->
+<div class="flex-block-container" data-aos="fade-right">
+  <div>
+    <a href="images/1.png" class="image featured">
+  <img src="images/1.png" alt="NO2 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+  </div>
+  <div style="color: #6a6f77;">
+    <h5><u>NO₂ Concentration – December 2022</u></h5>
+    <ul class="justify">
+      <li>The map indicates higher concentrations of nitrogen dioxide in the eastern and southeastern regions of Austria, likely reflecting higher urban and traffic density.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PM2.5 Blok -->
+<div class="flex-block-container" data-aos="fade-left">
+  <div style="color: #6a6f77;">
+    <h5 style="margin-bottom: 0;"><u>PM₂.₅ Concentration – December 2022</u></h5>
+    <ul class="justify" style="margin-top: 0;">
+      <li>This map shows elevated PM₂.₅ concentrations particularly in the northern and eastern regions of Austria, indicating potential air quality risks due to fine particulate matter exposure.</li>
+    </ul>
+  </div>
+  <div>
+    <a href="images/2.png" class="image featured">
+  <img src="images/2.png" alt="PM2.5 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+  </div>
+</div>
+
+<!-- PM10 Blok -->
+<div class="flex-block-container" data-aos="fade-right">
+  <div>
+    <a href="images/3.png" class="image featured">
+  <img src="images/3.png" alt="PM10 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+  </div>
+  <div style="color: #6a6f77;">
+    <h5><u>PM₁₀ Concentration – December 2022</u></h5>
+    <ul class="justify" >
+      <li>PM₁₀ distribution shows significant levels across central and eastern Austria, suggesting a correlation with industrial and urban zones.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+  <!-- Step 2 -->
+
+<header style="margin-top: 0;" style="margin-bottom: 1em; margin-top: 2em;">
+  <h4 style="color: black;">Step 2 – Yearly Aggregated Pollutant Maps (2022)</h4>
+  <ul class="justify" style="color: #6a6f77;"style="margin-top: 0;" style="margin-top: 0;">
+    <li>In this step, yearly average concentration maps for NO₂, PM₂.₅, and PM₁₀ were generated for the year 2022. These maps provide a more stable and representative overview of pollutant exposure over time, helping to smooth out short-term fluctuations observed in monthly data.</li>
+    <li>The process began by aggregating monthly pollutant raster datasets from January to December 2022. Using the r.series tool in QGIS, a mean operation was applied to combine all twelve monthly GeoTIFFs into one annual average raster for each pollutant. Each output was then clipped to Austria’s national boundary and styled with a continuous color ramp to highlight areas of high and low concentration.</li>
+    <li>Below are the final yearly maps for 2022 for each pollutant:</li>
+  </ul>
+</header>
+
+<!-- NO2 - Image on Left -->
+<div class="flex-block-container" data-aos="fade-right">
+  <div>
+    <a href="images/4.png" class="image featured">
+  <img src="images/4.png" alt="NO2 Yearly Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+  </div>
+  <div style="color: #6a6f77;">
+    <h5><u>NO₂ – Yearly Average Concentration (2022)</u></h5>
+    <ul class="justify">
+      <li>This map shows elevated NO₂ levels primarily in the eastern part of Austria, corresponding with high-density urban and transport zones.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PM2.5 - Image on Right -->
+<div class="flex-block-container" data-aos="fade-left">
+  <div style="color: #6a6f77;">
+    <h5><u>PM₂.₅ – Yearly Average Concentration (2022)</u></h5>
+    <ul class="justify">
+      <li>Annual PM₂.₅ concentrations are higher in southeastern Austria. These fine particulates pose a significant health risk, especially in regions with dense population and limited air circulation.</li>
+    </ul>
+  </div>
+  <div>
+    <a href="images/5.png" class="image featured">
+  <img src="images/5.png" alt="PM2.5 Yearly Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+  </div>
+</div>
+
+<!-- PM10 - Image on Left  -->
+<div class="flex-block-container" data-aos="fade-right">
+  <div>
+    <a href="images/6.png" class="image featured">
+  <img src="images/6.png" alt="PM10 Yearly Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+  </div>
+  <div style="color: #6a6f77;">
+    <h5><u>PM₁₀ – Yearly Average Concentration (2022)</u></h5>
+    <ul class="justify">
+      <li>Annual PM₁₀ levels are notably higher in industrial and urban zones, especially across central and eastern Austria.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<!-- Step3 -->
+<header>
+	<h4 style="color: black;">Step 3 - Yearly Concentration Classification Maps (2020)</h4>
+  </header>
+  
+<!-- Container -->
+<div style="display: flex; align-items: flex-start; gap: 2em; margin-top: 1em; flex-wrap: wrap;">
+
+	<!-- Left: Image -->
+	<div style="flex: 1; min-width: 300px; max-width: 500px;">
+		<a href="images/concentration_levels.png" class="image featured">
+	  <img src="images/concentration_levels.png"
+		   alt="Legend"
+		   style="width: 100%; height: auto; max-height: 350px; object-fit: contain;" />
+		   </a>
+	</div>
+  
+	<!-- Right: Text -->
+	<div style="flex: 2; min-width: 300px; max-width: 800px; color: #6a6f77;">
+	  <ul class="justify" style="text-align: justify; list-style-type: disc; padding-left: 1.5em;">
+		<li>This step involves the classification of air pollutant concentrations for NO₂, PM₂.₅, and PM₁₀ for the year 2020. The annual average pollutant maps were reclassified into concentration classes based on the health guidelines defined by the European Union.</li>
+		<li>The reclassification was carried out in QGIS using the “Reclassify by Table” tool, applying defined threshold values for each pollutant. These thresholds were then used to generate discrete concentration maps that facilitate visual comparison of pollution levels across Austria.</li>
+		<li>The figure on the left is the reference for classification thresholds.</li>
+	  </ul>
+	</div>
+  </div>
+  
+  
+<!-- NO2 Classification - Image on Left -->
+<div class="flex-block-container" data-aos="fade-right" style="margin-top: 2em;">
+  <!-- Sol: Görsel -->
+  <div>
+    <a href="images/7.png" class="image featured">
+      <img src="images/7.png" alt="NO2 Classification Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+
+  <!-- Right: Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>NO₂ – Concentration Classes (2020)</u></h5>
+    <ul style="text-align: justify;">
+      <li>The NO₂ map displays two concentration classes: Class 1 (≤ 40 µg/m³), covers the majority of the country, shown in red. Class 2 (> 40 µg/m³), localized regions with higher pollution, mostly in central and northeastern Austria, shown in blue. These regions exceed the EU annual limit value for NO₂ (40 µg/m³), primarily aligning with urbanized and traffic-dense zones.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PM2.5 Classification - Image on Right -->
+<div class="flex-block-container" data-aos="fade-left" style="margin-top: 2em;">
+  <!-- Left: Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>PM₂.₅ – Concentration Classes (2020)</u></h5>
+    <ul style="text-align: justify;">
+      <li>The PM₂.₅ map presents three classes: Class 1 (≤ 10 µg/m³), shown in red, representing lower exposure areas. Class 2 (10–25 µg/m³), dominant across Austria, shown in yellow. Class 3 (> 25 µg/m³), concentrated in eastern and southeastern districts, shown in blue. The presence of Class 3 regions reveals high PM₂.₅ exposure, exceeding WHO recommended limits and posing a significant public health risk.</li>
+    </ul>
+  </div>
+
+  <!-- Right: Image -->
+  <div class="flex-block-container" data-aos="fade-right">
+    <a href="images/8.png" class="image featured">
+      <img src="images/8.png" alt="PM2.5 Classification Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+</div>
+
+  
+<!-- PM10 Classification - Image on Left  -->
+<div class="flex-block-container" data-aos="fade-right" style="margin-top: 2em;">
+  <!-- Left: Image -->
+  <div class="flex-block-container" data-aos="fade-right">
+    <a href="images/9.png" class="image featured">
+      <img src="images/9.png" alt="PM10 Classification Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+
+  <!-- Right: Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>PM₁₀ – Concentration Classes (2020)</u></h5>
+    <ul style="text-align: justify;">
+      <li>The PM₁₀ map shows two concentration classes: Class 1 (≤ 40 µg/m³), widespread across the country, in red. Class 2 (> 40 µg/m³), sparse, visible in limited eastern zones, in blue. PM₁₀ levels remain mostly within acceptable ranges across Austria, with only a few exceedance zones.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<!-- Step4 -->
+
+<header>
+  <h4 style="color: black;">Step 4 – Annual Average Difference Maps (2022)</h4>
+  <ul class="justify">
+  <p><li>This step aimed to assess how pollutant concentrations in 2022 differed from the recent historical average. To do this, the annual mean for each pollutant in 2022 was compared to the average of the five-year period between 2017 and 2021. The result is an anomaly map, highlighting areas where air quality either improved or worsened.</li></p>
+  <p><li>In QGIS, this was performed using the Raster Calculator by subtracting the 5-year average raster (2017–2021) from the 2022 raster for each pollutant. The resulting difference maps were styled using a diverging color scale: Blue tones indicate improvements (lower pollution in 2022 than the historical average), Red tones highlight deteriorations (higher pollution in 2022).</li></p>
+  <p><li>Below are the resulting maps and brief interpretations:</li></p>
+  </ul>
+</header>
+
+<!-- 1. Blok - Image on Left -->
+<div class="flex-block-container" data-aos="fade-right" style="margin-top: 2em;">
+  <!-- Image -->
+  <div>
+    <a href="images/10.png" class="image featured">
+      <img src="images/10.png" alt="NO2 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+
+  <!-- Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>NO₂ – Annual Average Difference (2022 vs. 2017–2021)</u></h5>
+    <ul style="text-align: justify;">
+      <li>Overall, NO₂ concentrations in Austria showed a slight improvement in 2022. Many areas, especially in the central and northeastern regions, experienced a decrease in nitrogen dioxide levels (blue tones), while some parts in the west and southeast showed minor increases (light red tones).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 2. Blok - Image on Left -->
+<div class="flex-block-container" data-aos="fade-left" style="margin-top: 2em;">
+  <!-- Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>PM₂.₅ – Annual Average Difference (2022 vs. 2017–2021)</u></h5>
+    <ul style="text-align: justify;">
+      <li>The PM₂.₅ anomaly map presents a clear north-south contrast. The northern and eastern zones exhibited declining PM₂.₅ levels (in blue), while southern and western Austria experienced higher-than-average concentrations in 2022 (in red), indicating possible localized pollution events or seasonal emissions.</li>
+    </ul>
+  </div>
+
+  <!-- Image -->
+  <div>
+    <a href="images/12.png" class="image featured">
+      <img src="images/12.png" alt="PM2.5 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+</div>
+
+<!-- 3. Blok - Image on Left -->
+<div class="flex-block-container" data-aos="fade-right" style="margin-top: 2em;">
+  <!-- Image -->
+  <div>
+    <a href="images/14.png" class="image featured">
+      <img src="images/14.png" alt="PM10 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+
+  <!-- Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>PM₁₀ – Annual Average Difference (2022 vs. 2017–2021)</u></h5>
+    <ul style="text-align: justify;">
+      <li>The pattern for PM₁₀ shows modest increases across central and southern Austria, with most of the country represented in light red. Only a few regions in the north show minor improvements. This suggests PM₁₀ levels remained relatively stable but with localized increases worth further attention.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<!-- Step5 -->
+
+<header>
+  <h4 style="color: black;">Step 5 – Land Cover Classification and Reclassification</h4>
+  <ul class="justify">
+  <p><li>In this step, ESA CCI Land Cover data for the year 2022 was reclassified into simplified land use categories based on the IPCC classification schema. The purpose of this process was to better align land cover types with categories that are more meaningful for environmental and exposure analysis (e.g., Settlement, Forest, Agriculture).</li></p>
+  <p><li>First, the raw NetCDF dataset from the Copernicus Climate Data Store was imported into QGIS. The variable lccs_class was selected and visualized using unique values. The raster was clipped to Austria’s national boundary (GAUL Level 0). A reclassification table was applied using the “Reclassify by Table” tool in QGIS to convert raw class codes into six general land use categories (Settlement, Agriculture, Forest, Grassland, Wetland, Other).</li></p>
+  <p><li>Below are the resulting maps and brief interpretations:</li></p>
+  </ul>
+</header>	
+
+<!-- Card Box (Cliccable) -->
+<div onclick="openPopup()" style="cursor: pointer; background: #f7f7f7; padding: 2em; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 900px; margin: auto; text-align: center;">
+	<h5 style="margin-top: 0;">From LCCS Legend to Reclassify by Table</h5>
+	<div style="display: flex; align-items: center; justify-content: center; gap: 2em; flex-wrap: wrap;">
+	  <div style="flex: 1; min-width: 250px; text-align: center;">
+		<img src="images/landcoverclasses.jpg" class="zoomable" style="max-width: 300px; width: 100%; border-radius: 8px;" />
+	  </div>
+	  <div style="flex: 0; font-size: 3em; color: black;">→</div>
+	  <div style="flex: 1; min-width: 250px; text-align: center;">
+		<img src="images/Austria_LC_CCI_to_IPCC.jpg" class="zoomable" style="max-width: 300px; width: 100%; border-radius: 8px;" />
+	  </div>
+	</div>
+  </div>
+  
+  <!-- Modal (Popup) -->
+  <div id="popup" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);">
+	<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2em; border-radius: 12px; max-width: 900px; width: 90%;">
+	  <span onclick="closePopup()" style="position: absolute; top: 0.5em; right: 1em; font-size: 1.5em; cursor: pointer;">&times;</span>
+	  <h4 style="margin-top: 0;">From LCCS Legend to Reclassify by Table</h4>
+	  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1em;">
+		<img src="images/landcoverclasses.jpg" class="zoomable" style="max-width: 300px; width: 100%; border-radius: 8px;" />
+		<div style="font-size: 2.5em;">→</div>
+		<img src="images/Austria_LC_CCI_to_IPCC.jpg" class="zoomable" style="max-width: 300px; width: 100%; border-radius: 8px;" />
+	  </div>
+	</div>
+</div>
+
+
+<!-- 3. Block - Image on Left -->
+<div class="flex-block-container" data-aos="fade-right" style="margin-top: 2em;">
+  <!-- Image -->
+  <div>
+    <a href="images/16.png" class="image featured">
+      <img src="images/16.png" alt="Final Reclassified Land Cover Map" style="width: 100%; height: auto; border-radius: 8px;" />
+    </a>
+  </div>
+
+  <!-- Explanation -->
+  <div style="color: #6a6f77;">
+    <h5><u>Final Reclassified Land Cover Map</u></h5>
+    <ul style="text-align: justify;">
+      <li>As visualized on the left side, the map reveals a predominance of forested and agricultural land across Austria. Urban settlements (in red) are mostly concentrated in the northeast and major cities. This reclassified raster forms the basis for subsequent zonal statistics and correlation with pollution levels in built-up areas.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<!-- Step6 -->
+
+<header>
+	<h4 style="color: black;">Step 6 – Zonal Statistics and Time-Series Trend Analysis (2013–2022)</h4>
+	<ul class="justify">
+	<p><li>In this step, spatial statistical analyses were conducted to evaluate long-term trends of air pollutant concentrations (NO₂, PM₂.₅, PM₁₀) specifically over urban settlement areas. The goal was to assess how pollution levels have changed in built-up zones over a 10-year period, offering insights into persistent exposure risks in urban environments.</li></p>
+	<p><li>The reclassified land cover map (Step 5) was used to isolate the settlement class. The “Settlement” raster layer was polygonized to a vector and dissolved into a single urban area mask.</li></p>
+	<p><li>Below are the resulting maps and brief interpretations:</li></p>
+	</ul>
+  </header>	
+
+<!-- 2 Image + Title + Explanation -->
+<div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2em; margin: 2em auto; max-width: 1200px;">
+
+  <!-- 1. Card -->
+  <div style="flex: 1 1 45%; display: flex; flex-direction: column; text-align: center;">
+    
+    <!-- Title + Visual container (for equal height) -->
+    <div style="height: 400px; display: flex; flex-direction: column; justify-content: flex-start;">
+      <h5 style="margin-bottom: 1em; text-transform: uppercase; letter-spacing: 1px;">Extracted Settlement Areas (2022)</h5>
+      <a href="images/17.png" class="image featured">
+  <img src="images/17.png" alt="PM10 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+    </div>
+
+    <!-- Explanation -->
+    <p style="text-align: justify; margin-top: 1.5em; color: #6a6f77;">
+      Using the settlement vector layer as a mask, zonal statistics were calculated on the annual average pollutant rasters from 2013 to 2022 for NO₂, PM₂.₅, and PM₁₀. For each year and pollutant, both mean and maximum values were extracted.
+    </p>
+  </div>
+
+  <!-- 2. Card -->
+  <div style="flex: 1 1 45%; display: flex; flex-direction: column; text-align: center;">
+    
+    <!-- Title + Visual container (for equal height) -->
+    <div style="height: 400px; display: flex; flex-direction: column; justify-content: flex-start;">
+      <h5 style="margin-bottom: 1em; text-transform: uppercase; letter-spacing: 1px;">Population Exposure Classes (for cross-reference with pollution intensity)</h5>
+      <a href="images/population_exposure.png" class="image featured">
+  <img src="images/population_exposure.png" alt="PM10 Map" style="width: 100%; height: auto; border-radius: 8px;" />
+</a>
+
+    </div>
+
+    <!-- Explanation -->
+    <p style="text-align: justify; margin-top: 1.5em; color: #6a6f77;">
+      All yearly zonal statistics were merged into a single vector layer via attribute joins. This enabled tracking and comparison of pollutant trends over time within settlement areas.
+    </p>
+  </div>
+
+</div>
+
+<!-- First explanatory note -->
+
+	<ul class="justify" style="margin-bottom: 0.5em;">
+	<li>The bar charts below present the mean and max annual pollutant values from 2013 to 2022 in settlement zones:</li>
+	</ul>
+  
+  
+  <!-- 3 bar chart container -->
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2em; margin-top: 0.3em; margin-bottom: 0.5em;">
+  
+	<!-- 1. Image -->
+	<div style="flex: 1; min-width: 280px; max-width: 400px; text-align: center;">
+	  <h5 style="margin-top: 0.5em;">NO₂ Bar Chart (2013–2022)</h5>
+	   <a href="images/elif_barchart.png" class="image featured">
+	  <img src="images/elif_barchart.png" alt="NO2 Map"
+		   style="width: 100%; height: auto; object-fit: cover; border: 3px solid black; border-radius: 6px;" />
+</a>
+	</div>
+  
+	<!-- 2. Image -->
+	<div style="flex: 1; min-width: 280px; max-width: 400px; text-align: center;">
+	  <h5 style="margin-top: 0.5em;">PM₂.₅ Bar Chart (2013–2022)</h5>
+	   <a href="images/arzu_barchart.png" class="image featured">
+	  <img src="images/arzu_barchart.png" alt="NO2 Map"
+		   style="width: 100%; height: auto; object-fit: cover; border: 3px solid black; border-radius: 6px;" />
+</a>
+	</div>
+  
+	<!-- 3. Image -->
+	<div style="flex: 1; min-width: 280px; max-width: 400px; text-align: center;">
+	  <h5 style="margin-top: 0.5em;">PM₁₀ Bar Chart (2013–2022)</h5>
+	   <a href="images/yaser_barchart.png" class="image featured">
+	  <img src="images/yaser_barchart.png" alt="NO2 Map"
+		   style="width: 100%; height: auto; object-fit: cover; border: 3px solid black; border-radius: 6px;" />
+</a>
+	</div>
+  
+  </div>
+  
+  <!-- Second explanatory note -->
+  
+	<ul class="justify" style="margin-top: 0em;">
+	<li>These charts allow identification of trends such as whether NO₂ levels have declined post-2020 or if PM₂.₅ has shown consistent exceedance in urban areas. Such time-series analysis supports targeted mitigation policies in consistently polluted areas.</li>
+	</ul>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 	
+
+<!-- Step 7 – Bivariate Mapping of Air Pollution and Population Exposure -->
+
+<header style="margin-top: 0;" style="margin-bottom: 1em; margin-top: 2em;">
+  <h4 style="color: black;">Step 7 – Bivariate Mapping of Air Pollution and Population Exposure</h4>
+  <ul class="justify">
+  <p style="color: #333;" style="line-height: 1.6;"><li>In this step, we integrated air pollutant concentration levels with population density to create bivariate maps. These maps visualize the intersection of environmental hazard and human exposure — highlighting areas where large populations are exposed to higher pollution levels.</li></p>
+  <p style="color: #333;" style="line-height: 1.6;"><li>To generate the bivariate maps, first, the concentration class for each pollutant was calculated using reclassified raster maps (from Step 3). Population exposure classes were derived using quantile classification of the WorldPop raster dataset. Zonal statistics were applied using GAUL Level 2 administrative units (districts) to compute the median population class and maximum pollution class. A new bivariate attribute was calculated using the formula:</li></p>
+  <p style="color: #333;" style="line-height: 1.6;"><li><code>bivariate = pol_class_max * 10 + pop_class_median</code></li></p>
+  <p style="color: #333;" style="line-height: 1.6;"><li>This method allowed for the identification of high-risk districts (e.g., codes 25, 35), where both pollution and population density are in the highest class.</li></p>
+  <p style="color: #333;" style="line-height: 1.6;"><li>The color scheme represents combinations of pollution (vertical axis) and population exposure (horizontal axis), enabling spatial interpretation of critical exposure zones.</li></p>
+  </ul>	
+</header>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<!-- Step 8 -->
+
+<header style="margin-top: 0;" style="margin-bottom: 1em; margin-top: 2em;">
+  <h4 style="color: black;">Step 8 – Population Exposure by Pollution Class (Pie Charts)</h4>
+  <ul class="justify" style="color: #333">
+    <P style="line-height: 1.6;"><li>In this step, population exposure is visualized by aggregating the population data within each air pollution concentration class for NO₂, PM₂.₅, and PM₁₀. This was achieved by dissolving the bivariate output layers by pollutant class (i.e., <code>pol_class_max</code>) and performing zonal statistics with the original WorldPop raster.</li></P>
+    <P style="line-height: 1.6;"><li>Each pollutant-specific vector layer was used to compute the total population (<code>pop_sum</code>) exposed to each concentration level. The results were visualized as pie charts to represent the proportion of the Austrian population living under different pollution burden categories.</li></P>
+  </ul>
+</header>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<!-- Step 9 – Development of the Final Website and WebGIS -->
+
+<header style="margin-top: 0;" style="margin-bottom: 1em; margin-top: 2em;">
+  <h4 style="color: black;">Step 9 – Development of the Final Website and WebGIS</h4>
+  <ul class="justify">
+  <p><li>The final step is to create a website and an interactive WebGIS platform to effectively communicate the spatial analysis results.</li></p>
+  <p><li>The objective was to ensure that the complex geospatial data processed in QGIS, ranging from pollutant concentrations to land cover and population exposure, could be easily accessed, visualized, and interpreted by broader audiences.</li></p>
+  </ul>
+
+  <h5 style="margin-top: 1em;">Website Structure and Content</h5>
+  <ul class="justify">
+  <p style="color: #333;">The website was built using HTML and customized based on a responsive template. It consists of multiple pages, including:</p>
+    <li style="margin-left: 1.2em;"><strong>Home:</strong> Overview of the project’s context.</li>
+    <li style="margin-left: 1.2em;"><strong>Workflow:</strong> Detailed explanation of the step-by-step GIS procedures and data processing, each accompanied by relevant maps and charts.</li>
+    <li style="margin-left: 1.2em;"><strong>Results:</strong> Includes bivariate maps and population exposure charts.</li>
+    <li style="margin-left: 1.2em;"><strong>WebGIS:</strong> Embeds the interactive map.</li>
+  </ul>
+
+  <h5 style="margin-top: 1em;">WebGIS Functionality</h5>
+  <ul class="justify">
+  <p style="color: #333;">The WebGIS was implemented using OpenLayers, an open-source JavaScript library for displaying map data in web browsers. It allows interactive exploration of spatial data including pollutant distributions, land cover classes, and population density layers.</p>
+  <p style="color: #333;">Key features include:</p>
+    <li style="margin-left: 1.2em;">Layer control to toggle visibility of different datasets.</li>
+    <li style="margin-left: 1.2em;">Pop-up information boxes displaying detailed attribute data on feature click.</li>
+    <li style="margin-left: 1.2em;">Zoom and pan controls for intuitive navigation.</li>
+    <li style="margin-left: 1.2em;">Responsive design ensuring usability on both desktop and mobile devices.</li>
+  </ul>
+  <p class="justify" style="color: #333;">This approach enables stakeholders, researchers, and the public to engage directly with the data, facilitating informed decisions and increasing transparency regarding air pollution monitoring efforts in Austria.</p>
+</header>
+
+<!-- Adding a line between steps -->
+<div class="section-divider"></div> 
+
+<ul class="actions special">
+  <li><a href="results.html" class="button primary">Check the Results</a></li>
+</ul>
+
+</section>
+	  
+				<!-- Footer -->
+					<footer id="footer">
+						<!-- Source Code Button -->
+<div style="text-align: center; margin-top: 3em;">
+  <a href="https://github.com/arzuyiildizz" target="_blank" style="
+    display: inline-block;
+    padding: 1em 2em;
+    background-color: #ffffff10;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  " onmouseover="this.style.backgroundColor='#ffffff30'; this.style.transform='scale(1.05)';" onmouseout="this.style.backgroundColor='#ffffff10'; this.style.transform='scale(1)';">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <span>If you want to see the source code</span>
+      <span style="display: flex; align-items: center; gap: 0.5em; margin-top: 0.3em;">
+        <i class="fab fa-github"></i> Click this
+      </span>
+    </div>
+  </a>
+</div>
+
+						<ul class="copyright">
+							<li></li>
+							<li></a></li>
+						</ul>
+					</footer>
+
+				</div>
+
+			<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="home.html">Home</a></li>
+					<li><a href="workflow.html">Workflow</a></li>
+					<li><a href="results.html">Results</a></li>
+					<li><a href="WEBGIS.html">WebGIS</a></li>
+				
+				</ul>
+			</nav>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+
+			<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+			<script>
+			  AOS.init({
+				duration: 1000, 
+				once: true      
+			  });
+			</script>	
+
+
+			<!--Popup functionality -->
+			<script>
+	function openPopup() {
+	  document.getElementById("popup").style.display = "block";
+	}
+  
+	function closePopup() {
+	  document.getElementById("popup").style.display = "none";
+	}
+  
+	
+	document.addEventListener('keydown', function(event) {
+	  if (event.key === "Escape") {
+		closePopup();
+	  }
+	});
+
+	// Close popup when clicking outside the content area
+  document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("popup");
+    const popupContent = popup.querySelector("div"); // İç popup içeriği
+
+    popup.addEventListener("click", function (e) {
+      if (!popupContent.contains(e.target)) {
+        closePopup();
+      }
+    });
+  });
+  </script>
+  
+
+			  <style>
+				.zoomable {
+				  transition: transform 0.3s ease;
+				  cursor: zoom-in;
+				}
+			  
+				.zoomable:active {
+				  transform: scale(2); 
+				  cursor: zoom-out;
+				  z-index: 10000;
+				}
+			</style>
+
+			
+		
+	</body>
+</html>

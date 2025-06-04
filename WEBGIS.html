@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebGIS - Air Pollution Monitoring in Austria</title>
+
+  <!-- OpenLayers CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@latest/ol.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol-layerswitcher@4.1.0/dist/ol-layerswitcher.css" />
+
+  <!-- Website Theme CSS -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+  
+
+<style>
+  /* The map is larger but centered on the page */
+  #map {
+    width: 90vw;              
+    max-width: 1400px;        
+    height: 90vh;            
+    margin: 30px auto;        
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid #ccc;  
+    border-radius: 10px;      
+  }
+
+  /* Remove the effect of theme styles on the mapr */
+  .wrapper, .inner, section {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+</style>
+
+<style>
+  .custom-control {
+    position: absolute;
+    bottom: 40px;        
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    border: 1px solid #888;   
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 13px;
+    color: #000;
+    z-index: 1000;
+    pointer-events: none; 
+  }
+</style>
+
+<style>
+	.custom-scale-line {
+	  position: absolute;
+	  right: 10px;
+	  bottom: 90px; 
+	  background: rgba(255, 255, 255, 0.8);
+	  padding: 3px 6px;
+	  border: 1px solid #888; 
+	  border-radius: 4px;
+	  font-size: 12px;
+	  color: black;
+	  z-index: 1001; 
+	  
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
+</style>
+
+
+<style>
+  .layer-switcher {
+    z-index: 2000 !important;
+    background: white !important;
+    color: #111 !important;
+  }
+
+  .layer-switcher .panel {
+    background: white !important;
+    color: #111 !important;
+  }
+
+  .layer-switcher label {
+    display: inline !important;
+    color: #000 !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .layer-switcher .panel label span {
+    font-size: 12px !important;
+  }
+</style>
+
+<style>
+  #legend {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.85); 
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 13px;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000;
+    pointer-events: auto;
+    text-align: center; 
+    border-radius: 6px;
+  }
+
+  #legend-title {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+	color: #000;	
+  }
+
+  #legend img {
+    display: block;
+    margin: 0 auto;
+    max-width: 180px;
+  }
+</style>
+
+
+
+</head>
+<body class="landing is-preload">
+
+  <!-- Page Wrapper -->
+  <div id="page-wrapper">
+
+    <!-- Header (similar with home screen)-->
+    <header id="header" >
+      <h1><a href="home.html">WEBGIS</a></h1>
+      <nav id="nav">
+        <ul>
+          <li class="special">
+            <a href="#menu" class="menuToggle"><span>Menu</span></a>
+            <div id="menu">
+              <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="workflow.html">Workflow</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="WEBGIS.html">WebGIS</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Content Zone -->
+    <section id="main" class="wrapper">
+      <div class="inner">
+        <h2>WebGIS</h2>
+        <div id="map">
+  <div id="legend" class="custom-control" style="display: none;">
+  <strong id="legend-title">Legend</strong><br>
+  <img id="legend-image" src="" alt="Legend">
+</div>
+
+
+</div>
+
+    </section>
+
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- OpenLayers -->
+  <script src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ol-layerswitcher@4.1.0"></script>
+
+  <!-- WebGIS JS -->
+  <script src="assets/js/webgis.js"></script>
+
+  
+</body>
+</html>
